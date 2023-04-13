@@ -1,0 +1,9 @@
+.btn-carrousel {
+    opacity: 0;
+    border-radius: 50%;
+    padding: 5px;
+}
+
+.carrousel:hover .btn-carrousel {
+    opacity: 1;
+}

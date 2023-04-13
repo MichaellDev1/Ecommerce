@@ -1,0 +1,16 @@
+.menuCategory {
+    animation: startMenu .1s linear;
+}
+
+@keyframes startMenu {
+    0% {
+        opacity: 0;
+        top: -20px;
+        
+    }
+    100% {
+        opacity: 1;
+        top: 40px;
+
+    }
+}

@@ -1,0 +1,10 @@
+.alert {
+    animation: alert 2s infinite linear forwards;
+}
+
+@keyframes alert {
+    0% {transform: translateY(-300px);}
+    10% {transform: translateY(0);}
+    15% {transform: scale(1.2);}
+    17% {transform: scale(1);}
+}
