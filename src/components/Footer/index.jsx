@@ -44,7 +44,7 @@ export default function Footer() {
             Informacion
           </h4>
           {dataMoreInformation.map((dato) => (
-            <li>
+            <li key={dato.dato}>
               <a
                 href={`/information/${dato}`}
                 className="text-sm font-medium text-[#aaaaaa]"

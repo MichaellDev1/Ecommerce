@@ -7,7 +7,6 @@ import "./index.css";
 const NavElement = styled.nav`
   width: 100%;
   height: 50px;
-  display: flex;
   justify-content: center;
   padding: 0 50px;
   align-items: center;
@@ -26,7 +25,8 @@ const ListNav = styled.li`
   position: relative;
   a {
     text-decoration: none;
-    display: flex; align-items: center;
+    display: flex;
+    align-items: center;
     font-size: 15px;
     font-weight: 500;
     color: rgb(110 110 110);
@@ -55,15 +55,16 @@ export default function Nav() {
       setCategories(res);
     });
   }, []);
+
   return (
-    <NavElement>
+    <NavElement className="lg:flex hidden">
       <UlELement>
         <ListNav>
-          <a href="/">Home</a>
+          <a href="/">Inició</a>
         </ListNav>
         <ListNav>
           <a href="#" onClick={handleShowMenu}>
-            Categories
+            Categorias
             <span>
               <IoMdArrowDropdown />
             </span>
@@ -79,7 +80,8 @@ export default function Nav() {
               {categories
                 ? categories.map((category) => (
                     <a
-                      className="text-xl py-2 block"
+                      key={category}
+                      className="text-xl capitalize py-2 block"
                       href={`/category/${category}`}
                     >
                       {category}
@@ -90,19 +92,19 @@ export default function Nav() {
           </div>
         </ListNav>
         <ListNav>
-          <a href="/category/mens-shirts">Mens</a>
+          <a href="/category/mens-shirts">Hombre</a>
         </ListNav>
         <ListNav>
-          <a href="/category/womens-dresses">Womens</a>
+          <a href="/category/womens-dresses">Mujer</a>
         </ListNav>
         <ListNav>
-          <a href="/category/smartphones">Smartphones</a>
+          <a href="/category/smartphones">Celulares</a>
         </ListNav>
         <ListNav>
-          <a href="/allproducts">All Products</a>
+          <a href="/allproducts">Todos los productos</a>
         </ListNav>
         <ListNav>
-          <a href="#">Contact</a>
+          <a href="#">Contacto</a>
         </ListNav>
       </UlELement>
     </NavElement>

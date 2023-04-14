@@ -22,7 +22,7 @@ const Cuadrado = styled.div`
 `;
 const MainElement = styled.main`
   padding: 0 60px;
-  margin-top: 10px;
+  margin-top: 90px;
 `;
 
 export default function Main() {
@@ -31,7 +31,7 @@ export default function Main() {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(3, 370px)",
+          gridTemplateColumns: "repeat(3, 350px)",
           gap: "10px",
           gridTemplateRows: "repeat(3, 175px)",
           placeContent: "center",

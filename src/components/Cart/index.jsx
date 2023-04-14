@@ -6,7 +6,7 @@ import CardCartProduct from "../CardCartProduct";
 import styled from "styled-components";
 
 const CartElement = styled.div`
-  transition: right .5s;
+  transition: right 0.5s;
   overflow-y: scroll;
 `;
 
@@ -22,6 +22,8 @@ export default function Cart({ isOpenCart, handleOpenCart }) {
       setDalete(false);
       clearInterval(pauseAlert);
     }, 2000);
+
+    console.log(cartProduct);
   };
 
   return (
@@ -42,10 +44,16 @@ export default function Cart({ isOpenCart, handleOpenCart }) {
             className="flex text-base items-center"
             onClick={(e) => handleOpenCart(e)}
           >
-            <span className="text-lg">
+            <span className="text-base">
               <IoIosArrowBack />
             </span>
-            <span className="ml-1">Items({cartProduct.length})</span>
+            <span className="ml-1 text-base font-normal">
+              Items (
+              {cartProduct.reduce((lastValue, nextValue) => {
+                return lastValue + nextValue.cantidad;
+              }, 0)}
+              )
+            </span>
           </button>
         </div>
         <div className="text-[#222529] text-2xl py-5 font-semibold">
@@ -61,11 +69,12 @@ export default function Cart({ isOpenCart, handleOpenCart }) {
               {cartProduct.map((product) => (
                 <CardCartProduct
                   dataProduct={product}
+                  key={product.id}
                   handleDeleteProduct={handleDeleteProduct}
                 />
               ))}
               <div className="flex justify-between py-3 uppercase font-bold text-lg text-[#222529]">
-                <h4 >Total:</h4>
+                <h4>Total:</h4>
                 <span>
                   $
                   {cartProduct.reduce((lastValue, nextValue) => {

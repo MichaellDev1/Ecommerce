@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import useAddProduct from "../../hooks/useAddProduct";
 import { HiOutlineShoppingBag } from "react-icons/hi";
@@ -36,7 +36,7 @@ const DiscountPercentageElement = styled.span`
   z-index: 2;
 `;
 
-export default function CardProduct({ data, setAgregate, isDiscount = false, styles = null}) {
+function CardProduct({ data, setAgregate, isDiscount = false, styles = null}) {
   const { images, title, price, stock, discountPercentage, category, id } =
     data;
 
@@ -89,3 +89,5 @@ export default function CardProduct({ data, setAgregate, isDiscount = false, sty
     </Card>
   );
 }
+
+export default React.memo(CardProduct)

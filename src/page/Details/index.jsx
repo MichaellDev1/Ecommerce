@@ -70,30 +70,30 @@ export default function Delails() {
   return (
     <section className=" text-black py-6 min-h-[100vh] px-[50px]">
       <div>
-        <div>
+        <div className="flex flex-wrap">
           {singleProduct ? (
-            <div className="flex">
+            <div className="flex flex-wrap justify-center items-center">
               <div>
-                <div className="w-[430px] h-[350px]">
+                <div className="sm:w-[430px] sm:h-[300px] max-w-[1000px] w-[100%] h-[230px]">
                   <img
                     src={imageSelected}
                     alt=""
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="flex mt-2">
+                <div className="flex mt-5 flex-wrap">
                   {singleProduct.images.map((image, inx) => (
                     <ContentImage
                       className={` ${
                         imageSelected == image ? "border-2 border-black" : null
-                      } w-[100px] hover:border-2 border-black h-[100px] cursor-pointer`}
+                      } md:w-[100px] w-[70px] hover:border-2 border-black md:h-[100px] h-[70px] cursor-pointer`}
                       key={inx}
                       onClick={() => handleImageSelected(image)}
                     >
                       <img
                         src={image}
                         alt={image}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-contain"
                       />
                     </ContentImage>
                   ))}
@@ -101,22 +101,39 @@ export default function Delails() {
               </div>
               <div className="ml-5 flex flex-col min-w-[400px] justify-between h-[350px]">
                 <div className="flex flex-col justify-center h-full">
-                  <h2 className="text-[#222529] text-3xl font-bold py-1">{singleProduct.title}</h2>
-                  <span className="text-[#222529] text-2xl font-bold py-1">${singleProduct.price}</span>
-                  <p className="max-w-[400px] text-[15px] text-stone-500 font-semibold py-2">{singleProduct.description}</p>
+                  <h2 className="text-[#222529] text-3xl font-bold py-1">
+                    {singleProduct.title}
+                  </h2>
+                  <span className="text-[#222529] text-2xl font-bold py-1">
+                    ${singleProduct.price}
+                  </span>
+                  <p className="max-w-[400px] text-[15px] text-stone-500 font-semibold py-2">
+                    {singleProduct.description}
+                  </p>
                   <span className="text-[#4e4e4e] text-sm font-bold  ">
-                    CATEGORIA: <span className="capitalize">{singleProduct.category}</span>
+                    CATEGORIA:
+                    <span className="capitalize">{singleProduct.category}</span>
+                  </span>
+                  <span
+                    className={` ${
+                      singleProduct.stock > 0 ? "text-lime-800" : "text-red-500"
+                    } font-bold mt-3 text-lg uppercase`}
+                  >
+                    Stock: {singleProduct.stock}
                   </span>
                 </div>
-                <div className="flex">
+                <div className="flex mt-5">
                   <input
                     type="number"
                     name="number"
                     id="number"
                     onChange={handleChange}
-                    className="flex-1"
+                    className="bg-[#d1d1d1] max-w-[200px] text-[#222529] px-4 font-bold text-lg"
                   />
-                  <button className="bg-[#222529] flex-[2] ml-2 uppercase text-white text-base py-2 px-4 font-bold" onClick={handleAddCart}>
+                  <button
+                    className="bg-[#222529] ml-2 flex-1 uppercase text-white text-base py-2 px-4 font-bold"
+                    onClick={handleAddCart}
+                  >
                     AGREGAR AL CARRITO
                   </button>
                 </div>
