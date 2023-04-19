@@ -16,22 +16,26 @@ import Menu from "./components/Menu";
 
 function App() {
   const [isOpenCart, setOpenCart] = useState(false);
-  const [isOpenMenu,setOpenMenu] = useState(false)
+  const [isOpenMenu, setOpenMenu] = useState(false);
+
   const handleOpenCart = (e) => {
     e.preventDefault();
     setOpenCart(!isOpenCart);
+    if (isOpenMenu) setOpenMenu(false);
   };
 
   const handleOpenMenu = (e) => {
     e.preventDefault();
-    setOpenMenu(!isOpenMenu)
+    if (isOpenCart) setOpenCart(false);
+    setOpenMenu(!isOpenMenu);
   };
+
   return (
     <>
       <ProductContext>
         <BrowserRouter>
           <Cart isOpenCart={isOpenCart} handleOpenCart={handleOpenCart} />
-          <Menu isOpenMenu={isOpenMenu}/>
+          <Menu isOpenMenu={isOpenMenu} />
           <Header
             handleOpenCart={handleOpenCart}
             handleOpenMenu={handleOpenMenu}

@@ -11,6 +11,7 @@ import React, { Suspense } from "react";
 import { FiSmartphone } from "react-icons/fi";
 import { AiOutlineLaptop } from "react-icons/ai";
 import { GiSofa } from "react-icons/Gi";
+import { IoIosArrowDown } from "react-icons/io";
 import { TbPerfume } from "react-icons/tb";
 import { MdOutlineBroadcastOnHome } from "react-icons/md";
 import "./sectionOne.css";
@@ -19,6 +20,7 @@ import Main from "../../container/Main";
 import SectionInformation from "../../components/SectionInformation";
 import Carrousel from "../../components/Carrousel";
 import useHome from "../../hooks/useHome";
+import { useState } from "react";
 const CardProduct = React.lazy(() => import("../../components/CardProduct"));
 
 const CategoriesList = [
@@ -50,6 +52,7 @@ const CategoriesList = [
 ];
 
 export default function Home() {
+  const [isShow,setShow] = useState(true)
   const {
     selected,
     products,
@@ -59,27 +62,41 @@ export default function Home() {
     setAgregate,
     handleClick,
   } = useHome();
+
+  const handleOpenCategory = ()=>{
+    setShow(!isShow)
+  }
   return (
     <React.Fragment>
       <Main />
       <SectionElement className="px-[50px]">
         <TitleSection>Deals of the day</TitleSection>
-        <ContentCategories>
-          <UlList>
-            {CategoriesList.map((lis) => (
-              <ListCategories
-                key={lis.title}
-                className={lis.validSelected === selected ? "active" : null}
-                onClick={() => handleClick(lis.validSelected)}
-              >
-                <TitleCategory>
-                  <IconCategory>{lis.icon}</IconCategory>
-                  {lis.title}
-                </TitleCategory>
-              </ListCategories>
-            ))}
-          </UlList>
-        </ContentCategories>
+        <div className="mt-4 mb-[20px]">
+          <div className="text-[#888] text-[15px] font-semibold capitalize lg:hidden flex justify-between bg-white py-3 cursor-pointer px-5" onClick={handleOpenCategory}>
+            <span>{selected}</span>
+            <div>
+              <button>
+                <IoIosArrowDown />
+              </button>
+            </div>
+          </div>
+          <ContentCategories className={`${isShow ? 'block' : 'hidden'} lg:block`}>
+            <UlList className="lg:flex inline-block">
+              {CategoriesList.map((lis) => (
+                <ListCategories
+                  key={lis.title}
+                  className={lis.validSelected === selected ? "active" : null}
+                  onClick={() => handleClick(lis.validSelected)}
+                >
+                  <TitleCategory>
+                    <IconCategory>{lis.icon}</IconCategory>
+                    {lis.title}
+                  </TitleCategory>
+                </ListCategories>
+              ))}
+            </UlList>
+          </ContentCategories>
+        </div>
         <div>
           <div
             style={{

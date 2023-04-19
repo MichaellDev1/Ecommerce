@@ -20,10 +20,8 @@ const ListCategories = styled.li`
 `;
 
 const ContentCategories = styled.div`
-  padding: 10px 20px;
-  margin-top: 20px;
+  padding: 5px 20px;
   background: #fff;
-  margin-bottom: 20px;
 `;
 
 const TitleCategory = styled.h4`
@@ -35,7 +33,6 @@ const TitleCategory = styled.h4`
 `;
 
 const UlList = styled.ul`
-  display: flex;
   justify-content: between;
   align-items: center;
   gap: 80px;
