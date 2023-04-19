@@ -35,7 +35,7 @@ function App() {
       <ProductContext>
         <BrowserRouter>
           <Cart isOpenCart={isOpenCart} handleOpenCart={handleOpenCart} />
-          <Menu isOpenMenu={isOpenMenu} />
+          <Menu isOpenMenu={isOpenMenu} setOpenMenu={setOpenMenu}/>
           <Header
             handleOpenCart={handleOpenCart}
             handleOpenMenu={handleOpenMenu}

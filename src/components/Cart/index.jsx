@@ -13,6 +13,7 @@ const CartElement = styled.div`
 export default function Cart({ isOpenCart, handleOpenCart }) {
   const { cartProduct, setCart } = useContext(Context);
   const [isDelete, setDalete] = useState(false);
+  const [isClick, setClick] = useState(false);
 
   const handleDeleteProduct = (id) => {
     const deleteProduct = cartProduct.filter((product) => product.id !== id);
@@ -26,6 +27,14 @@ export default function Cart({ isOpenCart, handleOpenCart }) {
     console.log(cartProduct);
   };
 
+  const handleBuyCart = () => {
+    setClick(true)
+
+    const interval = setInterval(()=>{
+      setClick(false)
+      clearInterval(interval)
+    },2000)
+  };
   return (
     <React.Fragment>
       <div
@@ -85,8 +94,16 @@ export default function Cart({ isOpenCart, handleOpenCart }) {
             </div>
           )}
         </ul>
+        {isClick ? (
+            <p className="text-red-700 text-base font-semibold">
+              The request fails
+            </p>
+          ) : null}
         {cartProduct.length > 0 ? (
-          <button className="bg-[#222529] w-full uppercase text-white text-base py-3 px-4 font-bold">
+          <button
+            className="bg-[#222529] w-full uppercase text-white text-base py-3 px-4 font-bold"
+            onClick={handleBuyCart}
+          >
             FINALIZAR COMPRA
           </button>
         ) : null}

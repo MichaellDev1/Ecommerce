@@ -35,7 +35,7 @@ export default function Login() {
         <div>
           {isLog ? (
             <p className="text-red-700 text-base font-semibold">
-              Faild to fetch
+              The request fails
             </p>
           ) : null}
         </div>

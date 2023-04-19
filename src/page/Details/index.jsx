@@ -34,6 +34,7 @@ export default function Delails() {
   };
 
   const handleAddCart = () => {
+    if (cantidad > singleProduct.stock) return;
     const productRepeatIndex = cartProduct.findIndex(
       (product) => product.title === singleProduct.title
     );
@@ -63,7 +64,7 @@ export default function Delails() {
   };
 
   const handleChange = (e) => {
-    if (e.target.value <= 0) e.target.value = 0;
+    if (e.target.value < 0) e.target.value = 0;
     else setCantidad(e.target.value);
   };
 

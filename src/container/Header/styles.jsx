@@ -14,25 +14,6 @@ const HeaderElement = styled.header`
   background: #fff;
 `;
 
-const InputStyled = styled.input`
-  background: #fff;
-  padding: 6px 15px;
-  border: none;
-  :focus {
-    background: #fff;
-  }
-  color: #000;
-  outline: none;
-  border: 1px solid #bdbdbd;
-  border-radius: 18px;
-  ::placeholder {
-    color: ;
-    font-weight: 400;
-    font-size: 14px;
-    color: rgb(161 161 170);
-  }
-`;
-
 const Buttons = styled.a`
   background: none;
   border: none;
@@ -55,19 +36,4 @@ const LogoHeader = styled.a`
   font-weight: 500;
 `;
 
-const BtnSearch = styled.button`
-  background: none;
-  position: absolute;
-  right: 2.1px;
-  top: 4px;
-  padding: 7px;
-  display: grid;
-  border-radius: 50%;
-  background: #2563eb;
-  border: none;
-  cursor: pointer;
-  color: #fff;
-  font-size: 15px;
-`;
-
-export { BtnSearch, Buttons, HeaderElement, InputStyled, LogoHeader };
+export { Buttons, HeaderElement, LogoHeader };

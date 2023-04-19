@@ -3,23 +3,14 @@ import { HiOutlineShoppingBag } from "react-icons/hi";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { AiOutlineUser } from "react-icons/ai";
 import { FiMenu } from "react-icons/fi";
-import { BiSearch } from "react-icons/bi";
-import { FcShop } from "react-icons/fc";
 import logo from "../../../public/logo.png";
 import Context from "../../context/ProductContext";
-import useHeader from "../../hooks/useHeader";
-import {
-  BtnSearch,
-  Buttons,
-  HeaderElement,
-  InputStyled,
-  LogoHeader,
-} from "./styles";
+
+import { Buttons, HeaderElement, LogoHeader } from "./styles";
+import FromSearch from "../../components/FormSearch";
 
 export default function Header({ handleOpenCart, handleOpenMenu }) {
   const { cartProduct } = useContext(Context);
-  const { handleChange, handleSubmit } = useHeader();
-
   return (
     <HeaderElement>
       <div>
@@ -29,24 +20,9 @@ export default function Header({ handleOpenCart, handleOpenMenu }) {
           </div>
         </LogoHeader>
       </div>
-      <form
-        action=""
-        className="lg:block hidden"
-        style={{ fontSize: "15px", position: "relative" }}
-        onSubmit={handleSubmit}
-      >
-        <InputStyled
-          type="text"
-          name="search"
-          className="w-[400px]"
-          id="search"
-          placeholder="Iphone, laptops, furniture..."
-          onChange={handleChange}
-        />
-        <BtnSearch>
-          <BiSearch />
-        </BtnSearch>
-      </form>
+      <div className="lg:block hidden">
+        <FromSearch style={"min-w-[400px] placeholder:text-[14px]"} />
+      </div>
       <div className="flex">
         <Buttons onClick={(e) => handleOpenMenu(e)} className="lg:hidden">
           <span className="text-[#43484e]">
